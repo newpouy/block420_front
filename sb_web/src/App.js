@@ -16,13 +16,13 @@ class App extends Component {
      }
     if(typeof web3 != 'undefined'){
        console.log("Using web3 detected from external source like Metamask")
-       this.web3 = new Web3(web3.currentProvider)
+       this.web3 = new Web3(new Web3.providers.HttpProvider("http://ropsten.infura.io/"))
     } else {
        console.log("No web3 detected. Falling back to http://localhost:8545. You should remove this fallback when you deploy live, as it's inherently insecure. Consider switching to Metamask for development. More info here: http://truffleframework.com/tutorials/truffle-and-metamask");
        this.web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"))
     }
 
-  const MyContract = web3.eth.contract([
+  const MyContract = this.web3.eth.contract([
     {
         "anonymous": false,
         "inputs": [
@@ -228,7 +228,7 @@ class App extends Component {
 ])
 
       this.state.ContractInstance = MyContract.at("0xb165a4c9e8145b52986425db5137994ae88fe7c0")
-
+console.log('contract',this.state.ContractInstance)
   }
 
 
