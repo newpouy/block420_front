@@ -6,6 +6,7 @@ import './Artist.css';
 class Artist extends Component {
   
   render() {
+    console.log('dd',this.props.contract)
     return (
       <div>
         <div id="upload-box" >

@@ -240,15 +240,19 @@ console.log('contract',this.state.ContractInstance)
         </Jumbotron>
         <Tabs defaultActiveKey={2} id="uncontrolled-tab-example">
           <Tab eventKey={1} title="Artist">
-            <Artist/>
+            <Artist contract={this.state.ContractInstance}/>
           </Tab>
           <Tab eventKey={2} title="Listener">
-            <Listener/>
+            <Listener contract={this.state.ContractInstance}/>
           </Tab>
+          {/* <Button onClick={()=>this.click()} bsStyle="primary">Primary</Button> */}
         </Tabs>
       </div>
     )
   }
+//   click() {
+//     this.state.ContractInstance.
+//   }
 }
 
 export default App;
