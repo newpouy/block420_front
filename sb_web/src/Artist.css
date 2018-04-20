@@ -1,0 +1,11 @@
+#upload-box{
+  margin-top: 2em;
+  padding: 1em;
+}
+.upload{
+  display: inline-block !important;
+}
+.btn-wrapper{
+  display: inline-block;
+  vertical-align: middle;
+}
