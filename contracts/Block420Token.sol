@@ -4,7 +4,7 @@ contract Block420Token {
     address public owner;
     string public name = "Block420Token";
     string public symbol = "BTH";
-    uint8 public decimals = 10;
+    uint8 public decimals = 18; // 18 is standard token decimal
     uint public totalSupply = 0;
     
     mapping(address => uint) balances;
@@ -52,7 +52,7 @@ contract Block420Token {
         return allowed[_owner][_spender];
     }
 
-    function mint(address _to, uint256 _amount) internal returns (bool) {
+    function mint(address _to, uint256 _amount) public returns (bool) {
         require(msg.sender == owner);
         totalSupply = totalSupply + _amount;
         balances[_to] = balances[_to] + _amount;
