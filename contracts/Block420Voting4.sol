@@ -5,6 +5,7 @@ import "./Block420Token.sol";
 contract Block420Voting {
     Block420Token public token;
     mapping(bytes32 => Post) public posts;
+    uint8 decimals = 18;
 
     event Posting(bytes32 indexed id, address indexed author, string message);
     event Voting(address indexed voter, bytes32 indexed postId, uint voteCount);
@@ -35,7 +36,7 @@ contract Block420Voting {
         post.exists = true;
         posts[id] = post;
 
-        token.mint(msg.sender, 1*token.decimals);
+        token.mint(msg.sender, 10**uint256(decimals));
 
         emit Posting(post.id, post.author, post.message);
     }
@@ -46,8 +47,8 @@ contract Block420Voting {
 
         post.voteCount += 1; //보팅수를 1증가시켜준다
 
-        token.mint(msg.sender, 1*token.decimals / 2);
-        token.mint(post.author, 1*token.decimals / 2);
+        token.mint(msg.sender, 10**uint256(decimals)/2);
+        token.mint(post.author, 10**uint256(decimals)/2);
 
         emit Voting(msg.sender, post.id, post.voteCount); // 보팅이벤트를 발생해서 로그에 기록
 
