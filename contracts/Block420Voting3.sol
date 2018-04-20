@@ -24,7 +24,7 @@ contract Block420Voting {
         bytes32 postId;
     }
 
-    function Block420() public {
+    function Block420Voting() public {
         token = new Block420Token();
     }
 
