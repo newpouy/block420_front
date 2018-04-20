@@ -12,7 +12,7 @@ class App extends Component {
   constructor(props){
      super(props)
      this.state = {
-       
+
      }
     if(typeof web3 != 'undefined'){
        console.log("Using web3 detected from external source like Metamask")
@@ -225,9 +225,9 @@ class App extends Component {
         "stateMutability": "view",
         "type": "function"
     }
-  ])
+])
 
-      this.state.ContractInstance = MyContract.at("0x71e87a4a340f61ac04524e475787dc918c895a73")
+      this.state.ContractInstance = MyContract.at("0xb165a4c9e8145b52986425db5137994ae88fe7c0")
 
   }
 
