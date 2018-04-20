@@ -2,11 +2,11 @@ pragma solidity ^0.4.21;
 
 import "./Block420Token.sol";
 
-contract Block420Vote is Block420Token {
+contract Block420Vote {
     Block420Token public token; //
     bytes32[] public postIds;
     mapping(bytes32 => Post) public posts;
-    Vote[] internal recentVotes;
+    Vote[] recentVotes;
     event Posting(bytes32 indexed id, address indexed author, string message);
     event Voting(address indexed voter, bytes32 indexed postId, uint votes);
 
@@ -27,7 +27,7 @@ contract Block420Vote is Block420Token {
     }
 
     function getPost(bytes32 postId) public view returns (bytes32 id, address author,string message, uint votes) {
-        Post storage post = posts[postId];
+        Post storage post = posts[postId]; // solidity mappings always return an object, handle error client side
         return (post.id, post.author, post.message, post.votes);
     }
 
@@ -53,8 +53,8 @@ contract Block420Vote is Block420Token {
         
         
         post.votes += 1;
-        token.mint(post.author, );
-        token.mint(msg.sender, );
+        token.mint(post.author, 2); // qty to be decided
+        token.mint(msg.sender, 1);
        
         emit Voting(msg.sender, post.id, post.votes);
 
